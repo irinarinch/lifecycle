@@ -5,6 +5,7 @@ import { v1 } from 'uuid';
 import { FormEvent } from "react";
 import Card from './Card';
 import axios from 'axios';
+import btn from '/btn.png';
 
 export type TFormData = {
   note: string,
@@ -71,7 +72,7 @@ const Notes = () => {
             onChange={onChangeHandler}
             className={style.textarea}
           />
-          <img src="/btn.png" alt="submit button" className={style.btn} onClick={onSubmitHandler}/>
+          <img src={btn} alt="submit button" className={style.btn} onClick={onSubmitHandler}/>
         </div>
       </form>
     </>
