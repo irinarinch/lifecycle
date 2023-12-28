@@ -13,11 +13,6 @@ function App() {
         <h4>Задача 2. CRUD</h4>
         <Notes />
       </div>
-      {/* 
-      <div className="task">
-        <h4>Задача 3. Анонимный чат</h4>
-        
-      </div> */}
     </>
   );
 }
