@@ -1,26 +1,21 @@
 import { FormEvent } from "react";
-import style from "./watches.module.css";
-
 import { v1 } from "uuid";
 
+import style from "./watches.module.css";
+
 export type TFormData = {
-  name: string;
-  hours: string;
-  id: string;
+  name: string,
+  zone: string,
+  id: string,
 };
 
 interface IFormProps {
-  formData: TFormData;
-  setFormData: React.Dispatch<React.SetStateAction<TFormData>>;
-  dataHandler: (formData: TFormData) => void;
+  formData: TFormData,
+  setFormData: React.Dispatch<React.SetStateAction<TFormData>>,
+  dataHandler: (formData: TFormData) => void,
 }
 
 const Form = (props: IFormProps) => {
-  // const [error, setError] = useState({
-  //   date: false,
-  //   distance: false,
-  // });
-
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
 
@@ -28,68 +23,50 @@ const Form = (props: IFormProps) => {
       ...prevForm,
       [name]: value,
     }));
-
-    // if (value !== '') {
-    //   setError((prev) => ({
-    //     ...prev,
-    //     [name]: false,
-    //   }));
-    // }
   };
 
   const onSubmitHandler = (e: FormEvent) => {
     e.preventDefault();
 
-    if (props.formData.name === "" || props.formData.hours === "") return;
+    if (props.formData.name === "" || props.formData.zone === "") return;
 
     props.dataHandler(props.formData);
-
     props.setFormData({
       name: "",
-      hours: "",
+      zone: "",
       id: v1(),
     });
   };
 
-  // const checkError = async () => {
-  //   Object.entries(props.formData).forEach(pair => {
-  //     if (pair.includes('')) {
-  //       setError((prev) => ({
-  //         ...prev,
-  //         [pair[0]]: true,
-  //       }));
-  //     }
-  //   });
-  // }
-
   return (
     <form onSubmit={onSubmitHandler} className={style.form}>
-      <div className={style.date}>
+      <div>
         <label htmlFor="name" className={style.label}>
           Название
         </label>
         <input
           value={props.formData.name}
           id="name"
-          name="date"
+          name="name"
           type="text"
           onChange={onChangeHandler}
-          className={style.name}
+          className={style.name_input}
         />
       </div>
-      <div className={style.distance}>
-        <label htmlFor="hours" className={style.label}>
+      <div>
+        <label htmlFor="zone" className={style.label}>
           Временная зона
         </label>
         <input
-          value={props.formData.hours}
-          id="hours"
-          name="hours"
+          value={props.formData.zone}
+          id="zone"
+          name="zone"
           type="number"
-          min="0"
+          min="-12"
+          max="14"
           step="1"
           onChange={onChangeHandler}
-          className={style.hours}
+          className={style.zone_input}
         />
       </div>
       <button type="submit" className={style.btn}>

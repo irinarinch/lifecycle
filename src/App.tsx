@@ -1,3 +1,4 @@
+import Notes from "./components/crud/Notes";
 import Watches from "./components/watches/Watches";
 
 function App() {
@@ -8,9 +9,11 @@ function App() {
         <h4>Задача 1. Мировые часы</h4>
         <Watches />
       </div>
-      {/* <div className="task">
+      <div className="task">
         <h4>Задача 2. CRUD</h4>
+        <Notes />
       </div>
+      {/* 
       <div className="task">
         <h4>Задача 3. Анонимный чат</h4>
         
