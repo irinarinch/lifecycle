@@ -1,5 +1,5 @@
-import Notes from "./components/crud/Notes";
-import Watches from "./components/watches/Watches";
+// import Notes from "./components/crud/Notes";
+// import Watches from "./components/watches/Watches";
 
 function App() {
   return (
